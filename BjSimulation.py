@@ -86,6 +86,8 @@ class BjSimulation(object):
         self.player_starting_chips_list = config["player_starting_chips_list"]
         self.player_name_list = config["player_name_list"]
         self.player_list = []
+        self.insurance_on_three_plus = config["insurance_on_three_plus"]
+        self.player_indexing_list = config["player_strategy_list"]
         # Dealer holds the num_players'th position since they are zero indexed
         self.dealer = Player(self.num_players, self.dealer_strategy, 1000000, "Dealer")
         self.totalCount = 0
@@ -494,6 +496,26 @@ class BjSimulation(object):
                     self.player_list[i].active_list[0] = False
                     self.payoutPlayer(i, self.FACTOR_BLACKJACK)
 
+
+    """
+    " TODO
+    """
+    def getDecision(self, position, card_list, is_follow_up):
+        if is_follow_up:
+            idx = 0
+        else:
+            idx = 1
+        if self.player_indexing_list[position]:
+            if self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)]:
+                is_positive = self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)][1] >= 0:
+                # Check that the count is higher than a positive index, or lower than a negative one
+                if is_positive and self.curr_game.true_count >= self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)][1]:
+                    return self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)][0]:
+                elif not is_positive and self.curr_game.true_count < self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)][1]:
+                    return self.player_list[position].player_index_list[self.getStratKeyFromHand(card_list)][0]:
+        return self.player_strategy_list[position][self.getStratKeyFromHand(self.player_list[position].hands[hand_idx])][self.getDealerIndex()][idx]
+                    
+    
 
     """
     " This function will produce the key necessary to look up the proper choice in the strategy dictionary.

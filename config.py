@@ -30,6 +30,7 @@ player_name_list = ["HiLo", "Felt"]
 #player_adjust_betting_list = ["HiLo", "Basic"]
 player_adjust_betting_list = ["HiLo", "Felt"]
 num_players = len(player_name_list)
+insurance_on_three_plus = [True, True, False]
 
 basic_strategy_S17 = {
 #                              Dealer: 2     3     4     5     6     7     8     9     10    A
@@ -121,4 +122,50 @@ basic_strategy_H17 = {
                   "pA":  [None, None, "P",  "P",  "P",  "P",  "P",  "P",  "P",  "P",  "P",  "P"],
                  }
 
+illustrious_18 = {
+#                             Dealer: 2     3     4     5     6     7     8     9     10    A
+                  "2":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "3":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "4":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "5":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "6":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "7":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "8":   [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "9":   [None, None, ["D", 1], None, None, None, None, ["D", 3], None, None, None, None],
+                  "10":  [None, None, None, None, None, None, None, None, None, None, ["D", 4], ["D", 4]],
+                  "11":  [None, None, None, None, None, None, None, None, None, None, None, ["D", 1]],
+                  "12":  [None, None, ["S", 3], ["S", 2], ["H", -1], ["H", -2], ["H", -1], None, None, None, None, None],
+                  "13":  [None, None, ["H", -1] , ["H", -2], None, None, None, None, None, None, None, None],
+                  "14":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "15":  [None, None, None, None, None, None, None, None, None, None, ["S", 4], None],
+                  "16":  [None, None, None, None, None, None, None, None, None, ["S", 5], ["S", 0], None],
+                  "17":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "18":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "19":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "20":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "21":  [None, None, None, None, None, None, None, None, None, None, None, None],
+
+#                             Dealer: 2     3     4     5     6     7    8    9    10   A
+                  "s13": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s14": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s15": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s16": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s17": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s18": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s19": [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "s20": [None, None, None, None, None, None, None, None, None, None, None, None],
+#                            Dealer:  2     3     4     5     6     7     8     9     10    A
+                  "p2":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p3":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p4":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p5":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p6":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p7":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p8":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p9":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                  "p10": [None, None, None, None, None, ["P", 5], ["P", 4], None, None, None, None, None],
+                  "pA":  [None, None, None, None, None, None, None, None, None, None, None, None],
+                 }
+
 player_strategy_list = [basic_strategy_S17, basic_strategy_S17, basic_strategy_S17]
+player_indexing_list = [illustrious_18, illustrious_18, None]
